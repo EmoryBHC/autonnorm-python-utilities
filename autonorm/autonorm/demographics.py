@@ -1,5 +1,5 @@
 from typing import Optional
-from src.enums import Race, Sex, Handedness, DemographicVariableType, DemographicCoding
+from .enums import Race, Sex, Handedness, DemographicVariableType, DemographicCoding
 
 
 class DemographicVariable():
