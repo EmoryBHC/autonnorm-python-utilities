@@ -1,2 +1,0 @@
-class TestObject:
-    hello = "world"

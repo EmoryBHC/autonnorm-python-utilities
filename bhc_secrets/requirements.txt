@@ -1,1 +1,0 @@
-git+https://github.com/EmoryBHC/autonorm-python-utilities.git@main#subdirectory=bhc_utilities
