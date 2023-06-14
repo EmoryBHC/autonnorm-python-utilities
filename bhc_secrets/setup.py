@@ -7,6 +7,6 @@ setup(
     author="Your Name",
     packages=["bhc_secrets"],
     install_requires=[
-        'bhc_utilities'
+        '../bhc_utilities'
     ],
 )
