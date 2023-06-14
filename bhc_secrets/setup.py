@@ -7,6 +7,6 @@ setup(
     author="Your Name",
     packages=["bhc_secrets"],
     install_requires=[
-        'git+https://github.com/EmoryBHC/autonorm-python-utilities.git@main#subdirectory=bhc_utilities'
+        "git+https://github.com/EmoryBHC/autonorm-python-utilities.git@main#subdirectory=bhc_utilities"
     ],
 )
