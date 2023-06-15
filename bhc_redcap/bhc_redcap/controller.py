@@ -10,7 +10,7 @@ class RedcapController:
     def __init__(self) -> None:
         self.logger = logging.getLogger()
 
-    def __export_records(self, project: RedcapProject, record_ids: Optional[List[str]], instrument_names: Optional[List[str]], redcap_event_names: Optional[List[str]] = None, redcap_repeat_instances: Optional[List[str]] = None, redcap_repeat_instruments: Optional[List[str]] = None, start_datetime: Optional[datetime] = None, end_datetime: Optional[datetime] = None) -> List[RedcapRecord]:
+    def export_records(self, project: RedcapProject, record_ids: Optional[List[str]], instrument_names: Optional[List[str]], redcap_event_names: Optional[List[str]] = None, redcap_repeat_instances: Optional[List[str]] = None, redcap_repeat_instruments: Optional[List[str]] = None, start_datetime: Optional[datetime] = None, end_datetime: Optional[datetime] = None) -> List[RedcapRecord]:
         data = {
             'token': project.api_token,
             'content': 'record',
@@ -53,7 +53,7 @@ class RedcapController:
             ))
         return records
 
-    def __import_records(self, project: RedcapProject, records: List[RedcapRecord]) -> dict:
+    def import_records(self, project: RedcapProject, records: List[RedcapRecord]) -> dict:
         try:
             redcap_data: List[dict] = []
             for record in records:
