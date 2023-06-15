@@ -1,4 +1,4 @@
-from bhc_psyncs.bhc_psyncs.controller import PsyncsController
+from bhc_psyncs.controller import PsyncsController
 
 
 def test_controller():

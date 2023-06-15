@@ -1,4 +1,4 @@
-from bhc_redcap.bhc_redcap.controller import RedcapController
+from bhc_redcap.controller import RedcapController
 
 
 def test_controller():
