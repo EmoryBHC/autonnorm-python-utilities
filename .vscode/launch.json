@@ -1,19 +1,6 @@
 {
     "version": "0.2.0",
-    "env": {
-        "PYTHONPATH": "${workspaceFolder}/AutoNormGeneral"
-    },
     "configurations": [   
-        {
-            "name": "DEBUG: App",
-            "type": "python",
-            "request": "launch",
-            "module": "pytest",
-            "console": "integratedTerminal",
-            "args": [
-              "AutoNormGeneral/src/tests/debug/run_debug_test.py"
-            ]
-          },
         {
             "name": "RUN:Current File",
             "type": "python",

@@ -184,3 +184,14 @@ class Demographics():
             "education": self.education.value if self.education else None,
             "diagnosis": self.diagnosis.value if self.diagnosis else None
         }
+
+
+demo = Demographics(
+    coding=DemographicCoding.PSYNCS,
+    race=Race.AMERICAN_INDIAN_OR_ALASKAN_NATIVE,
+    sex=Sex.FEMALE,
+    handedness=Handedness.AMBIDEXTOROUS,
+    age=20,
+    education=16,
+    diagnosis=None
+)
