@@ -13,7 +13,7 @@ class PsyncsController:
         self.logger = logging.getLogger()
         pass
 
-    def _post_normed_scores(self, raw_score: Score, test_id: int, score_id: int, norm_id: int, demographics: Demographics) -> PsyncsNormResponse:
+    def post_normed_scores(self, raw_score: Score, test_id: int, score_id: int, norm_id: int, demographics: Demographics) -> PsyncsNormResponse:
         demographics.coding = DemographicCoding.PSYNCS
         endpoint = "/normalized-scores"
         body = {

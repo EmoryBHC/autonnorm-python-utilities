@@ -4,7 +4,7 @@ import json
 from typing import Any
 
 
-class AwsSecretsController:
+class SecretsController:
     def __init__(self, region_name: str = 'us-east-1') -> None:
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.INFO)
