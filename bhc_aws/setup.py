@@ -5,6 +5,6 @@ setup(
     version="1.0.0",
     description="A Python module for working with AWS objects",
     author="Matthew Doiron",
-    packages=["bhc_secrets"],
+    packages=["bhc_aws"],
     install_requires=['boto3'],
 )
