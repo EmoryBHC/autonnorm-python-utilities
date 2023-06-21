@@ -10,8 +10,6 @@ class ProxyResponse():
         self.body = json.dumps(content)
         if headers:
             self.headers = headers
-        self.logger = logging.getLogger()
-        self.logger.info(vars(self))
 
     def as_dict(self) -> dict:
         # This function can be avoided by just calling vars(ProxyResponse(content=XXXX, status_code=XXXX)) directly
