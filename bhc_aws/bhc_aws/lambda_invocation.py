@@ -1,6 +1,6 @@
 import json
 from typing import Optional
-from bhc_aws import LambdaRequestContext
+from .lambda_request_context import LambdaRequestContext
 
 
 class LambdaInvocation:
