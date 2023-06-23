@@ -1,6 +1,6 @@
 from copy import deepcopy
 from typing import Optional
-from .enums import ScoreType, ScoreModifier,
+from .enums import ScoreType, ScoreModifier
 from .score import Score
 
 
