@@ -1,7 +1,6 @@
 from copy import deepcopy
 from typing import Optional
 from .enums import ScoreType, ScoreModifier
-from .score import Score
 
 
 class Score:
@@ -10,7 +9,7 @@ class Score:
         self.type: ScoreType = type
         self.modifier: Optional[ScoreModifier] = modifier
 
-    def rounded(self, places: int) -> Score:
+    def rounded(self, places: int):
         score = deepcopy(self)
         score.value = round(score.value, places)
         return score
