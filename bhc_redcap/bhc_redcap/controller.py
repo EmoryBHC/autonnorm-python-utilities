@@ -85,3 +85,14 @@ class RedcapController:
         except Exception as e:
             self.logger.info('...Redcap Record Import Unsuccessful')
             raise e
+
+    def export_event_instrument_mappings(self, project: RedcapProject):
+        data = {
+            'token': project.api_token,
+            'content': 'formEventMapping',
+            'format': 'json',
+            'returnFormat': 'json'
+        }
+        self.logger.info('...Redcap Event-Instrument Mappings Export Successful')
+        response = requests.post(project.api_url, data=data)
+        return response.json()
