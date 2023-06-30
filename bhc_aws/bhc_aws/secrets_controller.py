@@ -38,5 +38,8 @@ class SecretsController:
         if keys:
             key = keys[0]
             if key:
-                value = dictionary.get(key)
-                return value if len(keys) == 1 else self.get_nested(value, *keys[1:])
+                try:
+                    value = dictionary[key]
+                except:
+                    raise
+                return value if len(keys) == 1 else self._get_nested(value, *keys[1:])
