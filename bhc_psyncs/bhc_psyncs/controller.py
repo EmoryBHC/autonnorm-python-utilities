@@ -27,7 +27,7 @@ class PsyncsController:
         if url is None:
             raise Exception("Could not get PSYNCS_API_URL environment variable")
         try:
-            response = requests.post(url, json.dumps(body))
+            response = requests.post(url+endpoint, json.dumps(body))
         except Exception as e:
             raise e
 
