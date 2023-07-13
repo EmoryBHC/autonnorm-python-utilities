@@ -33,7 +33,13 @@ class PsyncsController:
 
         if response.status_code == 200:
             self.logger.info('Psyncs Call: Successful')
-            return PsyncsNormResponse(response.json())
+            return PsyncsNormResponse(response.json(), status_code=response.status_code)
+        elif response.status_code == 400:
+            self.logger.info('Psyncs Call: Unsuccessful with Client Error')
+            return PsyncsNormResponse(response.json(), status_code=response.status_code)
+        elif response.status_code == 500:
+            self.logger.info('Psyncs Call: Unsuccessful with Server Error')
+            return PsyncsNormResponse(response.json(), status_code=response.status_code)
         else:
-            self.logger.info('Psyncs Call: Unsuccessful')
-            raise Exception("Psyncs API Status != 200")
+            self.logger.info('Psyncs Call: Unsuccessful with unknown error')
+            raise Exception("Psyncs API Status != 200,400, or 500")

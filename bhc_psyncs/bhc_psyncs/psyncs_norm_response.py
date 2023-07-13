@@ -5,11 +5,12 @@ from .enums import ScoreModifier, ScoreType
 
 
 class PsyncsNormResponse:
-    def __init__(self, response: dict) -> None:
+    def __init__(self, response: dict, status_code: int) -> None:
+        self.status_code = status_code
         self.status = response['status']
+        self.message = response['message']
         self.datetime = response['datetime']
         self.version = response['version']
-        self.message = response['message']
 
         self.test = response['test']
         self.score = response['score']

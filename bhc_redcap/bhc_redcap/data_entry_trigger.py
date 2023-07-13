@@ -25,7 +25,6 @@ class RedcapDataEntryTrigger:
         url = "http://fakerul/?" + body
         query = urlsplit(url).query
         params = parse_qs(query)
-        params_dict = dict(params)
         flat_params_dict = {k: v[0] for k, v in params.items()}
         return flat_params_dict
 
