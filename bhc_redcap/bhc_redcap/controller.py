@@ -47,9 +47,9 @@ class RedcapController:
         self.logger.info('...Filtering successful')
 
         for raw_record in raw_records:
-            if raw_record.get('redcap_repeat_instance') is not None and redcap_repeat_instances is not None and raw_record.get('redcap_repeat_instance') not in redcap_repeat_instances:
+            if raw_record.get('redcap_repeat_instance') is not None and redcap_repeat_instances is not None and str(raw_record.get('redcap_repeat_instance')) not in redcap_repeat_instances:
                 continue
-            if raw_record.get('redcap_repeat_instrument') is not None and redcap_repeat_instruments is not None and raw_record.get('redcap_repeat_instrument') not in redcap_repeat_instruments:
+            if raw_record.get('redcap_repeat_instrument') is not None and redcap_repeat_instruments is not None and str(raw_record.get('redcap_repeat_instrument')) not in redcap_repeat_instruments:
                 continue
 
             records.append(RedcapRecord(
