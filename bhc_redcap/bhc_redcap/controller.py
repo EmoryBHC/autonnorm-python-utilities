@@ -1,5 +1,6 @@
 import requests
 import logging
+import json
 from datetime import datetime
 from typing import List, Optional
 from .project import RedcapProject
@@ -77,7 +78,7 @@ class RedcapController:
                 'data': '',
                 'returnContent': 'count',
                 'returnFormat': 'json',
-                'data': redcap_data
+                'data': json.dumps(redcap_data)
             }
             self.logger.info('...Redcap Record Import Successful')
             response = requests.post(project.api_url, data=data)
