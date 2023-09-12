@@ -23,6 +23,9 @@ class Race(Enum):
     BLACK_OR_AFRICAN_AMERICAN = 2
     NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER = 3
     WHITE = 4
+    OTHER = 98
+    ASIAN_INDIAN = 6060
+    UNKNOWN = 1029
 
 
 class Handedness(Enum):

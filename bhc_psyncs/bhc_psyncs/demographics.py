@@ -10,7 +10,10 @@ class DemographicVariable():
                 Race.WHITE.value: 99,
                 Race.AMERICAN_INDIAN_OR_ALASKAN_NATIVE.value: 94,
                 Race.BLACK_OR_AFRICAN_AMERICAN.value: 96,
-                Race.NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER.value: 97
+                Race.NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER.value: 97,
+                Race.OTHER: 98,
+                Race.ASIAN_INDIAN: 6060,
+                Race.UNKNOWN: 1029,
             },
             DemographicVariableType.SEX.value: {
                 Sex.MALE.value: 95,
