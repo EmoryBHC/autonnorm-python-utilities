@@ -16,8 +16,8 @@ class DemographicVariable():
                 Race.UNKNOWN: 1029,
             },
             DemographicVariableType.SEX.value: {
-                Sex.MALE.value: 95,
-                Sex.FEMALE.value: 99
+                Sex.MALE.value: 92,
+                Sex.FEMALE.value: 91
             },
             DemographicVariableType.HANDEDNESS.value: {
                 Handedness.RIGHT.value: 1,
