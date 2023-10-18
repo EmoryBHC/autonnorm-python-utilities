@@ -35,35 +35,39 @@ class DemographicVariable():
     def set_category(self):
         if self._coding == DemographicCoding.CUSTOM:
             self._category = self._category
-        if self._coding == DemographicCoding.PSYNCS:
+        elif self._coding == DemographicCoding.PSYNCS:
             if self._demo_var_type == DemographicVariableType.RACE:
                 self._category = Race(self._value).value
-            if self._demo_var_type == DemographicVariableType.SEX:
+            elif self._demo_var_type == DemographicVariableType.SEX:
                 self._category = Sex(self._value).value
-            if self._demo_var_type == DemographicVariableType.HANDEDNESS:
+            elif self._demo_var_type == DemographicVariableType.HANDEDNESS:
                 self._category = Handedness(self._value).value
-        if self._coding == DemographicCoding.HARMONIZED_BATTERY:
+        elif self._coding == DemographicCoding.HARMONIZED_BATTERY:
             if self._demo_var_type in [DemographicVariableType.RACE, DemographicVariableType.SEX, DemographicVariableType.HANDEDNESS]:
                 type = self._harmonized_battery_mappings[self._demo_var_type.value]
                 category = list(type.keys())[list(type.values()).index(int(self._value))]
                 self._category = category
+        else:
+            raise Exception('Unknown DemographicCoding')
 
     def set_value(self):
         if self._coding == DemographicCoding.CUSTOM:
             self._value = self._value
-        if self._coding == DemographicCoding.PSYNCS:
+        elif self._coding == DemographicCoding.PSYNCS:
             if self._demo_var_type == DemographicVariableType.RACE:
                 self._value = Race(self._category).value
-            if self._demo_var_type == DemographicVariableType.SEX:
+            elif self._demo_var_type == DemographicVariableType.SEX:
                 self._value = Sex(self._category).value
-            if self._demo_var_type == DemographicVariableType.HANDEDNESS:
+            elif self._demo_var_type == DemographicVariableType.HANDEDNESS:
                 self._value = Handedness(self._category).value
-        if self._coding == DemographicCoding.HARMONIZED_BATTERY:
+        elif self._coding == DemographicCoding.HARMONIZED_BATTERY:
             if self._demo_var_type in [DemographicVariableType.RACE, DemographicVariableType.SEX, DemographicVariableType.HANDEDNESS]:
                 type = self._harmonized_battery_mappings[self._demo_var_type.value]
                 if self._category:
                     value = type[self._category]
                     self._value = value
+        else:
+            raise Exception('Unknown DemographicCoding')
 
     @property
     def value(self):
@@ -150,13 +154,15 @@ class HandednessVariable(DemographicVariable):
 class Demographics():
     def __init__(self, coding: DemographicCoding, race: Optional[int], sex: Optional[int], handedness: Optional[int], age: Optional[int], education: Optional[int], diagnosis: Optional[int]):
         self.race: Optional[RaceVariable] = RaceVariable(coding=coding, value=race) if race else None
-        self.sex = SexVariable(coding=coding, value=sex) if sex else None
-        self.handedness = HandednessVariable(coding=coding, value=handedness) if handedness else None
-        self.age = DemographicVariable(demo_type=DemographicVariableType.AGE, coding=coding, value=age) if age else None
-        self.education = DemographicVariable(demo_type=DemographicVariableType.EDUCATION,
-                                             coding=coding, value=education) if education else None
-        self.diagnosis = DemographicVariable(demo_type=DemographicVariableType.DIAGNOSIS,
-                                             coding=coding, value=diagnosis) if diagnosis else None
+        self.sex: Optional[SexVariable] = SexVariable(coding=coding, value=sex) if sex else None
+        self.handedness: Optional[HandednessVariable] = HandednessVariable(
+            coding=coding, value=handedness) if handedness else None
+        self.age: Optional[DemographicVariable] = DemographicVariable(
+            demo_type=DemographicVariableType.AGE, coding=coding, value=age) if age else None
+        self.education: Optional[DemographicVariable] = DemographicVariable(demo_type=DemographicVariableType.EDUCATION,
+                                                                            coding=coding, value=education) if education else None
+        self.diagnosis: Optional[DemographicVariable] = DemographicVariable(demo_type=DemographicVariableType.DIAGNOSIS,
+                                                                            coding=coding, value=diagnosis) if diagnosis else None
         self._coding = coding
 
     @property
