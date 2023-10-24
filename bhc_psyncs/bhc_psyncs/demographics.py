@@ -153,7 +153,7 @@ class HandednessVariable(DemographicVariable):
 
 class Demographics():
     def __init__(self, coding: DemographicCoding, race: Optional[int], sex: Optional[int], handedness: Optional[int], age: Optional[int], education: Optional[int], diagnosis: Optional[int]):
-        self.race: RaceVariable = RaceVariable(coding=coding, value=race) if race else None
+        self.race: Optional[RaceVariable] = RaceVariable(coding=coding, value=race) if race else None
         self.sex: Optional[SexVariable] = SexVariable(coding=coding, value=sex) if sex else None
         self.handedness: Optional[HandednessVariable] = HandednessVariable(
             coding=coding, value=handedness) if handedness else None

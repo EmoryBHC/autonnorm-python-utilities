@@ -1,7 +1,7 @@
 from .normalized_scores import NormalizedScores
 from .demographics import Demographics
 from .score import Score
-from .enums import ScoreModifier, ScoreType
+from .enums import ScoreModifier, ScoreType, DemographicCoding
 
 
 class PsyncsNormResponse:
@@ -33,7 +33,14 @@ class PsyncsNormResponse:
         }
         return NormalizedScores(**normalized_scores_params)
 
-    def parse_demographics(self, scores: dict) -> Demographics:
+    def parse_demographics(self, demographics: dict) -> Demographics:
         demographics_params = {
+            "coding": DemographicCoding.PSYNCS,
+            "age": demographics['age'],
+            "sex": demographics['sex'],
+            "education": demographics['education'],
+            "handedness": demographics['handedness'],
+            "race": demographics['race'],
+            "diagnosis": demographics['diagnosis'],
         }
         return Demographics(**demographics_params)
