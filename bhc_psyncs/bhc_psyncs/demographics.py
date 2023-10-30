@@ -153,16 +153,16 @@ class HandednessVariable(DemographicVariable):
 
 class Demographics():
     def __init__(self, coding: DemographicCoding, race: Optional[int], sex: Optional[int], handedness: Optional[int], age: Optional[int], education: Optional[int], diagnosis: Optional[int]):
-        self.race: Optional[RaceVariable] = RaceVariable(coding=coding, value=race) if race else None
-        self.sex: Optional[SexVariable] = SexVariable(coding=coding, value=sex) if sex else None
+        self.race: Optional[RaceVariable] = RaceVariable(coding=coding, value=race) if race is not None else None
+        self.sex: Optional[SexVariable] = SexVariable(coding=coding, value=sex) if sex is not None else None
         self.handedness: Optional[HandednessVariable] = HandednessVariable(
-            coding=coding, value=handedness) if handedness else None
+            coding=coding, value=handedness) if handedness is not None else None
         self.age: Optional[DemographicVariable] = DemographicVariable(
-            demo_type=DemographicVariableType.AGE, coding=coding, value=age) if age else None
+            demo_type=DemographicVariableType.AGE, coding=coding, value=age) if age is not None else None
         self.education: Optional[DemographicVariable] = DemographicVariable(demo_type=DemographicVariableType.EDUCATION,
-                                                                            coding=coding, value=education) if education else None
+                                                                            coding=coding, value=education) if education is not None else None
         self.diagnosis: Optional[DemographicVariable] = DemographicVariable(demo_type=DemographicVariableType.DIAGNOSIS,
-                                                                            coding=coding, value=diagnosis) if diagnosis else None
+                                                                            coding=coding, value=diagnosis) if diagnosis is not None else None
         self._coding = coding
 
     @property
