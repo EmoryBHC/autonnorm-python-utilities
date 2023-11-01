@@ -5,7 +5,7 @@ import os
 from .demographics import Demographics
 from .enums import DemographicCoding
 from .score import Score
-from .psyncs_norm_response import PsyncsNormResponse
+from .psyncs_response_norm import PsyncsResponseNorm
 
 
 class PsyncsController:
@@ -13,7 +13,7 @@ class PsyncsController:
         self.logger = logging.getLogger()
         pass
 
-    def post_normed_scores(self, raw_score: Score, test_id: int, score_id: int, norm_id: int, demographics: Demographics) -> PsyncsNormResponse:
+    def post_normed_scores(self, raw_score: Score, test_id: int, score_id: int, norm_id: int, demographics: Demographics) -> PsyncsResponseNorm:
         demographics.coding = DemographicCoding.PSYNCS
         endpoint = "/normalized-scores"
         body = {
@@ -33,13 +33,13 @@ class PsyncsController:
 
         if response.status_code == 200:
             self.logger.info('Psyncs Call: Successful')
-            return PsyncsNormResponse(response.json(), status_code=response.status_code)
+            return PsyncsResponseNorm(response.json(), status_code=response.status_code)
         elif response.status_code == 400:
             self.logger.info('Psyncs Call: Unsuccessful with Client Error')
-            return PsyncsNormResponse(response.json(), status_code=response.status_code)
+            return PsyncsResponseNorm(response.json(), status_code=response.status_code)
         elif response.status_code == 500:
             self.logger.info('Psyncs Call: Unsuccessful with Server Error')
-            return PsyncsNormResponse(response.json(), status_code=response.status_code)
+            return PsyncsResponseNorm(response.json(), status_code=response.status_code)
         else:
             self.logger.info('Psyncs Call: Unsuccessful with unknown error')
             raise Exception("Psyncs API Status != 200,400, or 500")

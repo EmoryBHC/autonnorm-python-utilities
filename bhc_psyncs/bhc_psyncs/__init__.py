@@ -3,4 +3,5 @@ from .enums import *
 from .demographics import *
 from .normalized_scores import *
 from .score import *
-from .psyncs_norm_response import *
+from .psyncs_response_norm import *
+from .psyncs_response import *
