@@ -9,8 +9,9 @@ from .psyncs_response_norm import PsyncsResponseNorm
 
 
 class PsyncsController:
-    def __init__(self) -> None:
+    def __init__(self, api_key: str) -> None:
         self.logger = logging.getLogger()
+        self.api_key = api_key
         pass
 
     def post_normed_scores(self, raw_score: Score, test_id: int, score_id: int, norm_id: int, demographics: Demographics) -> PsyncsResponseNorm:
@@ -26,8 +27,14 @@ class PsyncsController:
         url = os.environ['PSYNCS_API_URL']
         if url is None:
             raise Exception("Could not get PSYNCS_API_URL environment variable")
+
+        headers = {"x-api-key": self.api_key}
         try:
-            response = requests.post(url+endpoint, json.dumps(body))
+            response = requests.post(
+                url=url+endpoint,
+                data=json.dumps(body),
+                headers=headers
+            )
         except Exception as e:
             raise e
 
